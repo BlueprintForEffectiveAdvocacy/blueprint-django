@@ -29,9 +29,19 @@ class IssueViewSet(viewsets.ModelViewSet):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
 
+class OrgSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Organization
+        fields = ('org_name', 'issues')
+
+class OrgViewSet(viewsets.ModelViewSet):
+    queryset = Organization.objects.all()
+    serializer_class = OrgSerializer
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'issues', IssueViewSet)
+router.register(r'orgs', OrgViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
