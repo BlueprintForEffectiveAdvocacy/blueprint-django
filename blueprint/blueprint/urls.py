@@ -22,7 +22,7 @@ from rest_framework import routers, serializers, viewsets
 class IssueSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Issue
-        fields = ('issue_name', 'summary', 'body', 'image', 'video')
+        fields = ('issue_name', 'scope', 'summary', 'body', 'image', 'video')
 
 # ViewSets define the view behavior.
 class IssueViewSet(viewsets.ModelViewSet):
